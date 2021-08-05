@@ -84,8 +84,11 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 "-------------  YouComplteMe ---------------
 " Make sure you use single quotes
+" add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON option to index for C-like program
 Plug 'ycm-core/YouCompleteMe'
 nnoremap <Leader>jd :YcmCompleter GoToDefinition<CR>
+nnoremap <Leader>jr :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>je :YcmCompleter GoToDeclaration<CR>
 
 "============ Syntax Check ===================="
 " syntax check
