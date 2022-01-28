@@ -166,9 +166,6 @@ let g:vimspector_enable_mappings = 'HUMAN'
 "syntax enable
 "filetype plugin indent on
 
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
 
 " Initialize plugin system
 call plug#end()
