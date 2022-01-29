@@ -29,7 +29,34 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
-
+"gotag for go language
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -39,13 +66,9 @@ call plug#begin('~/.vim/plugged')
 " color scheme
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-"colorscheme onehalfdark
-"let g:airline_theme='onehalfdark'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
-"colorscheme purify "--------------------------------- Set onedark theme
-"let g:airline_theme='purify'
-"hi Normal guibg=#252834 ctermbg=234 "---- Place this after you set the colorscheme
-" syntax highlight
+
+" syntax highlight for yang
 Plug 'nathanalderson/yang.vim'
 
 "=============== auto complete ===============
@@ -57,6 +80,7 @@ Plug 'skywind3000/gutentags_plus'
 " let $GTAGSCONF = '/home/dyang/.globalrc'
 " gutentags set the root marker file 
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" let g:gutentags_project_root = ['.root']
 " the file to be created
 let g:gutentags_ctags_tagfile = '.tags'
 " support both ctags and gtags
@@ -82,6 +106,11 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 " let g:gutentags_plus_switch = 1
 " let g:gutentags_define_advanced_commands = 1
 
+"------------- outline of current file --------------------
+" outline of class
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
+nmap <F8> :TagbarToggle<CR>
+
 "-------------  YouComplteMe ---------------
 " Make sure you use single quotes
 " add -DCMAKE_EXPORT_COMPILE_COMMANDS=ON option to index for C-like program
@@ -94,8 +123,8 @@ nnoremap <Leader>je :YcmCompleter GoToDeclaration<CR>
 " syntax check
 " Plug 'vim-syntastic/syntastic'
 
-Plug 'dense-analysis/ale'
-let g:ale_disable_lsp = 1
+"Plug 'dense-analysis/ale'
+"let g:ale_disable_lsp = 1
 
 "================= status bar ================"
 " Plug 'itchyny/lightline.vim'
@@ -130,19 +159,17 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-"======================= outline of current file =============
-" outline of class
-Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
-nmap <F8> :TagbarToggle<CR>
 
 " Using a non-default branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
 
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plugin options, it is maintenace status use vim-go instead
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 "======================== search ================================"
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -160,8 +187,9 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/nerdcommenter'
 
 "===================  debug ====================="
-Plug 'puremourning/vimspector'
-let g:vimspector_enable_mappings = 'HUMAN'
+"
+"Plug 'puremourning/vimspector'
+"let g:vimspector_enable_mappings = 'HUMAN'
 "packadd! vimspector
 "syntax enable
 "filetype plugin indent on
@@ -174,4 +202,6 @@ call plug#end()
 
 colorscheme purify "--------------------------------- Set onedark theme
 let g:airline_theme='purify'
+"colorscheme onehalfdark "--------------------------------- Set onedark theme
+"let g:airline_theme='onehalfdark'
 hi Normal guibg=#252834 ctermbg=234 "---- Place this after you set the colorscheme
