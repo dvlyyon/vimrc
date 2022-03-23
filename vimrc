@@ -123,8 +123,8 @@ nnoremap <Leader>je :YcmCompleter GoToDeclaration<CR>
 " syntax check
 " Plug 'vim-syntastic/syntastic'
 
-"Plug 'dense-analysis/ale'
-"let g:ale_disable_lsp = 1
+Plug 'dense-analysis/ale'
+let g:ale_disable_lsp = 1
 
 "================= status bar ================"
 " Plug 'itchyny/lightline.vim'
