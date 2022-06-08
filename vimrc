@@ -124,6 +124,7 @@ nnoremap <Leader>je :YcmCompleter GoToDeclaration<CR>
 " Plug 'vim-syntastic/syntastic'
 
 Plug 'dense-analysis/ale'
+" need install code linter (pylint) in venv environment"
 let g:ale_disable_lsp = 1
 
 "================= status bar ================"
