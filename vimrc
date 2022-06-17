@@ -195,6 +195,8 @@ Plug 'preservim/nerdcommenter'
 "syntax enable
 "filetype plugin indent on
 
+"============= text editor , such as text, markdown, mail, rst, tex, textile, and asciidoc
+Plug 'preservim/vim-pencil'
 
 " Initialize plugin system
 call plug#end()
