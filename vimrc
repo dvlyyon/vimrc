@@ -1,5 +1,10 @@
 " text display
 set nu
+" tab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 "set relativenumber
 syntax on
 set t_Co=256
